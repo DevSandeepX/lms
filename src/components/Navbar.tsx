@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Menu } from "lucide-react"
 
-import { Show, UserAvatar } from "@clerk/nextjs"
+import { Show, UserButton } from "@clerk/nextjs"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -70,7 +70,7 @@ export default function Navbar() {
                                 </Link>
                             </Button>
 
-                            <UserAvatar />
+                            <UserButton />
                         </>
                     </Show>
                 </div>
@@ -133,7 +133,7 @@ export default function Navbar() {
                                             </Button>
 
                                             <div className="flex justify-center">
-                                                <UserAvatar />
+                                                <UserButton />
                                             </div>
                                         </div>
                                     </Show>
