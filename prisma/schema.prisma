@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+
+enum UserRole{
+USER
+ADMIN
+TEACHER
+}
+
+enum CourseStatus{
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum ChapterStatus{
+  DRAFT
+  PUBLISHED
+}
+model User{
+  id String @id @default(uuid())
+  name String?
+  email String @unique
+  avatarUrl String?
+  role UserRole @default(USER)
+
+  courses Course[]
+  enrollments Enrollment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Course{
+  id String @id @default(uuid())
+  title String @unique
+  description String?
+  imageUrl String?
+
+  status CourseStatus @default(DRAFT)
+  user User @relation(fields: [userId], references: [id])
+  userId String
+  chapters Chapter[]
+  enrollments Enrollment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Chapter{
+  id String @id @default(uuid())
+  title String @unique
+  description String?
+  order Int
+  youtubeVideoId String?
+
+  status ChapterStatus @default(DRAFT)
+  courseId String
+  course Course @relation(fields: [courseId],  references: [id], onDelete: Cascade)
+  @@unique([courseId,order])
+  @@unique([courseId,title])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+model Enrollment {
+  id       String @id @default(uuid())
+
+  userId   String
+  courseId String
+
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, courseId])
+}
