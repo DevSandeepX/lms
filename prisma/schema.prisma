@@ -32,6 +32,7 @@ enum ChapterStatus{
 }
 model User{
   id String @id @default(uuid())
+  clerkId String @unique
   name String?
   email String @unique
   avatarUrl String?
@@ -47,9 +48,10 @@ model User{
 
 model Course{
   id String @id @default(uuid())
-  title String @unique
+  title String 
   description String?
   imageUrl String?
+  slug  String @unique
 
   status CourseStatus @default(DRAFT)
   user User @relation(fields: [userId], references: [id])
@@ -64,7 +66,7 @@ model Course{
 
 model Chapter{
   id String @id @default(uuid())
-  title String @unique
+  title String
   description String?
   order Int
   youtubeVideoId String?
