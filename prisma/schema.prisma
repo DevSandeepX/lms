@@ -30,6 +30,7 @@ enum ChapterStatus{
   DRAFT
   PUBLISHED
 }
+
 model User{
   id String @id @default(uuid())
   clerkId String @unique
