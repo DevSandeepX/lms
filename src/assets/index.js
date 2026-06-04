@@ -5,10 +5,14 @@ import iot from "./images/iot.jpg";
 import python from "./images/python.jpg";
 import web from "./images/web.jpg";
 
+import student from "./images/student.png";
+import hero from "./images/hero.png";
+
 import home from "./icons/home.svg";
 import user from "./icons/user.svg";
 import logout from "./icons/logout.svg";
 import analytics from "./icons/analytics.svg";
+import { Laptop, LayoutDashboard, Route, TrendingUp } from "lucide-react";
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -31,7 +35,7 @@ export const USER_LINKS = [
   { label: "Analytics", href: "/user/analytics" },
 ];
 
-export const images = { iot, it, python, web, logo };
+export const images = { iot, it, python, web, logo, student, hero };
 export const icons = { home, user, logout, analytics };
 export const features = [
   {
@@ -39,27 +43,21 @@ export const features = [
     title: "Learn Anytime, Anywhere",
     description:
       "Access courses on any device and learn at your own pace without limitations.",
-    icon: "Laptop",
+    icon: Laptop,
   },
-  {
-    id: 2,
-    title: "Interactive Learning Path",
-    description:
-      "Navigate through chapters and lessons designed to make learning simple and engaging.",
-    icon: "Route",
-  },
+
   {
     id: 3,
     title: "Personal Learning Dashboard",
     description:
       "Keep all your enrolled courses, progress, and achievements in one place.",
-    icon: "LayoutDashboard",
+    icon: LayoutDashboard,
   },
   {
     id: 4,
     title: "Progress & Performance Insights",
     description:
       "Track your learning journey with detailed progress reports and completion statistics.",
-    icon: "TrendingUp",
+    icon: TrendingUp,
   },
 ];
