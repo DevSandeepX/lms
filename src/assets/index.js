@@ -30,9 +30,7 @@ export const ADMIN_LINKS = [
 
 export const USER_LINKS = [
   { label: "Dashboard", href: "/user/dashboard" },
-  { label: "My Enrollments", href: "/user/enrollments" },
-  { label: "Profile", href: "/user/profile" },
-  { label: "Analytics", href: "/user/analytics" },
+  { label: "My Courses", href: "/user/enrollments" },
 ];
 
 export const images = { iot, it, python, web, logo, student, hero };
