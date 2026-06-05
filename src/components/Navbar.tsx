@@ -66,7 +66,7 @@ export default function Navbar() {
                         <Show when="signed-in">
                             <>
                                 <Button variant="outline">
-                                    <Link href="/dashboard">
+                                    <Link href="/onboarding">
                                         Dashboard
                                     </Link>
                                 </Button>

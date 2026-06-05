@@ -49,3 +49,14 @@ export async function getCourses({
         totalCourses,
     };
 }
+
+export async function insertCourseEnrollement(userId: string, courseId: string) {
+   const enrollement =  await prisma.enrollment.create({
+        data: {
+            courseId,
+            userId
+        }
+    })
+
+    return enrollement
+}

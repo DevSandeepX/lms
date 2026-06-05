@@ -4,8 +4,9 @@ import "./globals.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
 import { cn } from "@/lib/utils";
+import { Toaster } from "react-hot-toast";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">
+        <Toaster position="top-right" />
         <ClerkProvider>
           {children}
         </ClerkProvider>
