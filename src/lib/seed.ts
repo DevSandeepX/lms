@@ -1,21 +1,8 @@
-import { CourseStatus, ChapterStatus, UserRole } from "@/generated/prisma/enums";
 import { prisma } from "./db";
 
 
-
 async function main() {
-    const teacher = await prisma.user.upsert({
-        where: {
-            email: "admin@lms.com",
-        },
-        update: {},
-        create: {
-            clerkId: "teacher_seed_001",
-            name: "Admin Teacher",
-            email: "admin@lms.com",
-            role: UserRole.ADMIN,
-        },
-    });
+    const teacher = { id: "03acafd2-4911-4bce-a9c1-6ac7070c02c3" };
 
     const courses = [
         {
@@ -98,7 +85,7 @@ async function main() {
             update: {},
             create: {
                 ...course,
-                status: CourseStatus.PUBLISHED,
+                status: "PUBLISHED",
                 userId: teacher.id,
 
                 chapters: {
@@ -107,19 +94,19 @@ async function main() {
                             title: "Introduction",
                             description: "Course overview and setup.",
                             order: 1,
-                            status: ChapterStatus.PUBLISHED,
+                            status: "PUBLISHED",
                         },
                         {
                             title: "Core Concepts",
                             description: "Learn the main concepts.",
                             order: 2,
-                            status: ChapterStatus.PUBLISHED,
+                            status: "PUBLISHED",
                         },
                         {
                             title: "Project Build",
                             description: "Apply concepts in a real project.",
                             order: 3,
-                            status: ChapterStatus.PUBLISHED,
+                            status: "PUBLISHED",
                         },
                     ],
                 },
